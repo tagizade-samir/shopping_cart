@@ -1,3 +1,3 @@
 import { RootState } from "../..";
 
-export const getIsDrawerOpen = ((state: RootState): boolean => state.app.isDrawerOpen);
+export const selectIsDrawerOpen = ((state: RootState): boolean => state.app.isDrawerOpen);
