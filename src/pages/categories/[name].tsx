@@ -8,10 +8,14 @@ import { IProduct } from 'src/modules/redux/reducers/products/types';
 import { getAllProductsSaga } from 'src/modules/saga/products/actions';
 import { ISubCategory } from 'src/modules/redux/reducers/subCategories/types';
 import { selectSubCategories } from 'src/modules/redux/reducers/subCategories/selectors';
-import { selectIsLoadingProducts, selectProducts } from 'src/modules/redux/reducers/products/selectors';
+import { selectIsLoadingProducts, selectProducts, selectProductsModalState } from 'src/modules/redux/reducers/products/selectors';
 import { styles } from './index.style';
 import { SubCategories } from './components/subCategories';
 import { Products } from './components/products';
+import { ProductModal } from './components/productModal';
+import { setProductsModalStateAC } from 'src/modules/redux/reducers/products/actions';
+import { addCartItemAC } from 'src/modules/redux/reducers/cart/actions';
+import { updateCartItemsSaga } from 'src/modules/saga/cart/actions';
 
 const CategoriesContent: FC<{}> = () => {
     const router = useRouter();
@@ -20,12 +24,21 @@ const CategoriesContent: FC<{}> = () => {
     const subCategories: Array<ISubCategory> = useSelector(selectSubCategories);
     const products: Array<IProduct> = useSelector(selectProducts);
     const isLoading: boolean = useSelector(selectIsLoadingProducts);
+    const { isProductsModalOpen, selectedProduct } = useSelector(selectProductsModalState);
 
     useEffect(() => {
         if (name) {
             dispatch(getAllProductsSaga(name));
         }
     }, [name, dispatch]);
+
+    const handleCloseModal = () => {
+        dispatch(setProductsModalStateAC({ isProductsModalOpen: false, selectedProduct: null }));
+    }
+
+    const handleAddToCart = (item: IProduct) => {
+        dispatch(updateCartItemsSaga({ type: 'add', data: item }));
+    }
 
     const subCategoriesContent = useMemo(() => {
         return subCategories.length && !isLoading
@@ -46,6 +59,13 @@ const CategoriesContent: FC<{}> = () => {
                 {subCategoriesContent}
                 {productsContent}
             </Box>
+            {isProductsModalOpen
+                ? <ProductModal
+                        item={selectedProduct}
+                        isOpen={isProductsModalOpen}
+                        handleClose={handleCloseModal}
+                        handleAddToCart={handleAddToCart} />
+                : null}
         </Box>
     );
 }

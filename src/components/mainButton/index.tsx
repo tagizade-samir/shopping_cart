@@ -1,18 +1,23 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, SyntheticEvent } from 'react';
 import { Button } from '@mui/material';
+import { getStyles } from './index.style';
 
 interface MainButtonProps {
     title?: string;
     icon?: ReactElement;
     variant?: "text" | "outlined" | "contained",
-    onClick: () => void,
+    onClick: (e: SyntheticEvent) => void,
 }
 
 const MainButton: FC<MainButtonProps> = ({ title, variant = 'text', onClick, icon }) => {
+    const styles = getStyles(variant);
     return(
-        <Button sx={{ transition: 'all 0.6s', width: variant === 'text' ? 'auto' : '100%' }} variant={variant} onClick={onClick}>
-            {icon}
-            {title}
+        <Button
+            sx={styles.rootWrapper}
+            variant={variant}
+            onClick={onClick}>
+                {icon}
+                {title}
         </Button>
     );
 }

@@ -15,6 +15,9 @@ export const theme = createTheme({
         h2: {
             color: '#fff',
             textAlign: 'center'
+        },
+        h5: {
+            fontSize: '1.2rem'
         }
     },
     components: {
