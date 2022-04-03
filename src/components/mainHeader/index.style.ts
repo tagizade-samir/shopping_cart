@@ -1,3 +1,4 @@
+import { theme } from "src/modules/theme";
 import { Utils } from "src/services/utils";
 
 export const styles = {
@@ -7,9 +8,16 @@ export const styles = {
         flex: 1,
         justifyContent: 'space-between',
         padding: '10px 20px',
+        [theme.breakpoints.down(Utils.CONSTANTS.headerChangeWidth)]: {
+            flexDirection: 'column',
+            gap: 2,
+        },
     },
     rightButtonsWrapper: {
         display: 'flex',
         gap: 2,
+        [theme.breakpoints.down(Utils.CONSTANTS.headerChangeWidth)]: {
+            flexDirection: 'column'
+        },
     }
 }

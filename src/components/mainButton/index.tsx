@@ -10,7 +10,7 @@ interface MainButtonProps {
 
 const MainButton: FC<MainButtonProps> = ({ title, variant = 'text', onClick, icon }) => {
     return(
-        <Button sx={{ transition: 'all 0.6s' }} variant={variant} onClick={onClick}>
+        <Button sx={{ transition: 'all 0.6s', width: variant === 'text' ? 'auto' : '100%' }} variant={variant} onClick={onClick}>
             {icon}
             {title}
         </Button>
