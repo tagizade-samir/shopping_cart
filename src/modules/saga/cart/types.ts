@@ -1,4 +1,4 @@
-import { IProduct } from "src/modules/redux/reducers/products/types";
+import { IProduct } from "../../redux/reducers/products/types";
 
 export const CartSagaActions = {
     UPDATE_CART_ITEMS: 'UPDATE_CART_ITEMS',

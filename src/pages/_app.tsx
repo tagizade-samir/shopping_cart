@@ -1,14 +1,15 @@
-import store from 'src/modules/redux';
+
 import { Provider } from 'react-redux';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material';
 
 import '../../styles/globals.css';
-import { theme } from 'src/modules/theme';
-import { Drawer } from 'src/components/drawer';
-import MainHeader from 'src/components/mainHeader';
 import { useRouter } from 'next/router';
-import DrawerController from 'src/components/drawerController';
+import DrawerController from '../components/drawerController';
+import { Drawer } from '../components/drawer';
+import MainHeader from '../components/mainHeader';
+import { theme } from '../modules/theme';
+import store from '../modules/redux';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();

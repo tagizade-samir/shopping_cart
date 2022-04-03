@@ -1,7 +1,7 @@
 import { Box } from '@mui/system';
 import React, { FC, useEffect, useMemo, useState } from 'react';
-import { IProduct } from 'src/modules/redux/reducers/products/types';
-import { Utils } from 'src/services/utils';
+import { IProduct } from '../../../../modules/redux/reducers/products/types';
+import { Utils } from '../../../../services/utils';
 import { CartItem } from '../cartItem';
 
 interface CartContentProps {
@@ -27,7 +27,7 @@ export const CartContent: FC<CartContentProps> = ({ items }) => {
     return(
         <Box sx={{ width: 500, display: 'flex' }}>
             <Box sx={{ width: '70%', paddingX: '10px' }}>
-                {products.map(({ item, count }: { item: IProduct, count: number }) => <CartItem key={item.id} item={item} count={count} />)}
+                {products.map(({ item, count }: any) => <CartItem key={item.id} item={item} count={count} />)}
             </Box>
             <Box sx={{ width: '30%', paddingX: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 {totalPrice} $

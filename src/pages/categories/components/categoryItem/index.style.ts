@@ -1,4 +1,5 @@
-import { theme } from "src/modules/theme";
+import { theme } from "../../../../modules/theme";
+
 
 export const styles = {
     root: {

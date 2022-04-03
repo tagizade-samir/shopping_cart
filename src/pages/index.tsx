@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head';
-import Home from 'src/pages/home';
+import Home from './home';
 
 
 const Index: NextPage = () => {

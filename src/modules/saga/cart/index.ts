@@ -1,9 +1,9 @@
 import { call, putResolve, select, takeLatest } from 'redux-saga/effects';
-import { addCartItemAC, removeCartItemAC } from 'src/modules/redux/reducers/cart/actions';
-import { selectCartItems } from 'src/modules/redux/reducers/cart/selectors';
-import { IProduct } from 'src/modules/redux/reducers/products/types';
-import { putItem } from 'src/modules/storage';
-import { Utils } from 'src/services/utils';
+import { Utils } from '../../../services/utils';
+import { addCartItemAC, removeCartItemAC } from '../../redux/reducers/cart/actions';
+import { selectCartItems } from '../../redux/reducers/cart/selectors';
+import { IProduct } from '../../redux/reducers/products/types';
+import { putItem } from '../../storage';
 import { CartSagaActions, ICartPayload } from './types';
 
 export function* watcherCart() {

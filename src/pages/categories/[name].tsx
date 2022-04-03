@@ -3,19 +3,18 @@ import { Box, LinearProgress } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { AppDispatch } from 'src/modules/redux';
-import { IProduct } from 'src/modules/redux/reducers/products/types';
-import { getAllProductsSaga } from 'src/modules/saga/products/actions';
-import { ISubCategory } from 'src/modules/redux/reducers/subCategories/types';
-import { selectSubCategories } from 'src/modules/redux/reducers/subCategories/selectors';
-import { selectIsLoadingProducts, selectProducts, selectProductsModalState } from 'src/modules/redux/reducers/products/selectors';
 import { styles } from './index.style';
 import { SubCategories } from './components/subCategories';
 import { Products } from './components/products';
 import { ProductModal } from './components/productModal';
-import { setProductsModalStateAC } from 'src/modules/redux/reducers/products/actions';
-import { addCartItemAC } from 'src/modules/redux/reducers/cart/actions';
-import { updateCartItemsSaga } from 'src/modules/saga/cart/actions';
+import { AppDispatch } from '../../modules/redux';
+import { ISubCategory } from '../../modules/redux/reducers/subCategories/types';
+import { selectSubCategories } from '../../modules/redux/reducers/subCategories/selectors';
+import { selectIsLoadingProducts, selectProducts, selectProductsModalState } from '../../modules/redux/reducers/products/selectors';
+import { IProduct } from '../../modules/redux/reducers/products/types';
+import { getAllProductsSaga } from '../../modules/saga/products/actions';
+import { setProductsModalStateAC } from '../../modules/redux/reducers/products/actions';
+import { updateCartItemsSaga } from '../../modules/saga/cart/actions';
 
 const CategoriesContent: FC<{}> = () => {
     const router = useRouter();

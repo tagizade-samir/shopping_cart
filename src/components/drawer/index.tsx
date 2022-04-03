@@ -5,9 +5,9 @@ import { Drawer as MUIDrawer, IconButton, Theme, Typography } from '@mui/materia
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 import { getStyles } from './index.style';
-import { AppDispatch } from 'src/modules/redux';
-import { setDrawerStateAC } from 'src/modules/redux/reducers/app/actions';
-import { selectIsDrawerOpen } from 'src/modules/redux/reducers/app/selectors';
+import { selectIsDrawerOpen } from '../../modules/redux/reducers/app/selectors';
+import { AppDispatch } from '../../modules/redux';
+import { setDrawerStateAC } from '../../modules/redux/reducers/app/actions';
 
 export const Drawer: FC<{}> = () => {
     const isOpen: boolean = useSelector(selectIsDrawerOpen);

@@ -2,12 +2,12 @@ import React, { FC, useCallback } from 'react';
 import { Box } from '@mui/system';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { ISubCategory } from 'src/modules/redux/reducers/subCategories/types';
 import { styles } from './index.style';
 import { SubCategoryItem } from '../subCategoryItem';
-import { selectSelectedSubCategory } from 'src/modules/redux/reducers/subCategories/selectors';
-import { AppDispatch } from 'src/modules/redux';
-import { setSelectedSubCategoryDataAC } from 'src/modules/redux/reducers/subCategories/actions';
+import { ISubCategory } from '../../../../modules/redux/reducers/subCategories/types';
+import { setSelectedSubCategoryDataAC } from '../../../../modules/redux/reducers/subCategories/actions';
+import { AppDispatch } from '../../../../modules/redux';
+import { selectSelectedSubCategory } from '../../../../modules/redux/reducers/subCategories/selectors';
 
 interface SubCategoriesProps {
     list: Array<ISubCategory> | [];

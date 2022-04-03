@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { Box, Typography } from '@mui/material';
 
 import { styles } from './index.style';
-import MainButton from 'src/components/mainButton';
 import Image from '../../assets/images/mainBG.jpg';
+import MainButton from '../../components/mainButton';
 
 const Home: FC<{}> = () => {
     const router = useRouter();

@@ -7,17 +7,17 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import { styles } from './index.style';
 import MainIconButton from '../mainIconButton';
-import { AppDispatch } from 'src/modules/redux';
-import { setDrawerStateAC } from 'src/modules/redux/reducers/app/actions';
-import { selectIsDrawerOpen } from 'src/modules/redux/reducers/app/selectors';
 import { Badge } from '@mui/material';
-import { selectCartItems } from 'src/modules/redux/reducers/cart/selectors';
 import { CartPopover } from '../cartPopover';
+import { selectIsDrawerOpen } from '../../modules/redux/reducers/app/selectors';
+import { selectCartItems } from '../../modules/redux/reducers/cart/selectors';
+import { setDrawerStateAC } from '../../modules/redux/reducers/app/actions';
+import { AppDispatch } from '../../modules/redux';
 
 const MainHeader: FC<{}> = () => {
     const isDrawerOpen: boolean = useSelector(selectIsDrawerOpen);
     const dispatch: AppDispatch = useDispatch();
-    const cartItems = useSelector(selectCartItems);
+    const cartItems: any = useSelector(selectCartItems);
     const [anchor, setAnchor]: any = useState(null);
 
     const handleToggleDrawer = () => {

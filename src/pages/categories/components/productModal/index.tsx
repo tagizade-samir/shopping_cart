@@ -1,8 +1,7 @@
 import { Card, CardActions, CardMedia, Modal, Typography, useTheme, Theme } from '@mui/material';
-import { Box } from '@mui/system';
 import React, { FC } from 'react';
-import MainButton from 'src/components/mainButton';
-import { IProduct } from 'src/modules/redux/reducers/products/types';
+import MainButton from '../../../../components/mainButton';
+import { IProduct } from '../../../../modules/redux/reducers/products/types';
 import { getStyles } from './index.style';
 
 interface ProductModalProps {

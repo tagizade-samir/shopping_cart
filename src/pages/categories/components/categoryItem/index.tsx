@@ -1,8 +1,7 @@
 import { Paper, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
-import { ICategory } from 'src/modules/redux/reducers/categories/types';
-import { theme } from 'src/modules/theme';
+import { ICategory } from '../../../../modules/redux/reducers/categories/types';
 import { styles } from './index.style';
 
 interface ICategoryItem {

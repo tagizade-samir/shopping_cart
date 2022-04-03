@@ -2,13 +2,13 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import React, { FC } from 'react';
-import MainIconButton from 'src/components/mainIconButton';
-import { IProduct } from 'src/modules/redux/reducers/products/types';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { AppDispatch } from 'src/modules/redux';
 import { useDispatch } from 'react-redux';
-import { updateCartItemsSaga } from 'src/modules/saga/cart/actions';
+import { IProduct } from '../../../../modules/redux/reducers/products/types';
+import { AppDispatch } from '../../../../modules/redux';
+import { updateCartItemsSaga } from '../../../../modules/saga/cart/actions';
+import MainIconButton from '../../../mainIconButton';
 
 interface CartItemProps {
     item: IProduct;

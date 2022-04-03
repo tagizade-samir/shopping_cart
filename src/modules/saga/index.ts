@@ -1,5 +1,5 @@
 import { spawn } from "redux-saga/effects";
-import { watcherCart } from "src/modules/saga/cart";
+import { watcherCart } from "./cart";
 import { watcherCategories } from "./categories";
 import { watcherProducts } from "./products";
 

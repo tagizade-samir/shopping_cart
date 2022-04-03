@@ -1,4 +1,4 @@
-import { IProduct } from "src/modules/redux/reducers/products/types";
+import { IProduct } from "../../modules/redux/reducers/products/types";
 
 const drawerWidth = 200;
 const headerChangeWidth = 250;

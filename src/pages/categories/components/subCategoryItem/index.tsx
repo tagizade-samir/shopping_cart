@@ -1,7 +1,7 @@
 import { Box } from '@mui/system';
 import React, { FC } from 'react';
-import MainButton from 'src/components/mainButton';
-import { ISubCategory } from 'src/modules/redux/reducers/subCategories/types';
+import MainButton from '../../../../components/mainButton';
+import { ISubCategory } from '../../../../modules/redux/reducers/subCategories/types';
 
 interface SubCategoryItemProps {
     item: ISubCategory;

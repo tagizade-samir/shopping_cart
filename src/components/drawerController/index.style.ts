@@ -1,5 +1,5 @@
 import { Theme } from "@mui/material";
-import { Utils } from "src/services/utils";
+import { Utils } from "../../services/utils";
 
 export const getStyles = (theme: Theme, isDrawerOpen: boolean) => ({
     mainWrapper: {

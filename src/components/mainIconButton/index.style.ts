@@ -1,5 +1,6 @@
-import { theme } from "src/modules/theme";
-import { Utils } from "src/services/utils";
+import { theme } from "../../modules/theme";
+import { Utils } from "../../services/utils";
+
 
 export const styles = {
     wrapper: {

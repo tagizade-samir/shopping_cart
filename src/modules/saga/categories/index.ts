@@ -1,7 +1,7 @@
 import { call, delay, put, takeLatest } from "redux-saga/effects";
-import { setCategoriesDataAC, setIsLoadingAC } from "src/modules/redux/reducers/categories/actions";
-import { ICategory } from "src/modules/redux/reducers/categories/types";
-import { getAllCategories, ResponseType } from "src/services/api";
+import { getAllCategories, ResponseType } from "../../../services/api";
+import { setCategoriesDataAC, setIsLoadingAC } from "../../redux/reducers/categories/actions";
+import { ICategory } from "../../redux/reducers/categories/types";
 import { CategoriesSagaActions } from "./types";
 
 export function* watcherCategories() {
