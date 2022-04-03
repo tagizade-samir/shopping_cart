@@ -3,10 +3,6 @@ import { Box, LinearProgress } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { styles } from './index.style';
-import { SubCategories } from './components/subCategories';
-import { Products } from './components/products';
-import { ProductModal } from './components/productModal';
 import { AppDispatch } from '../../modules/redux';
 import { ISubCategory } from '../../modules/redux/reducers/subCategories/types';
 import { selectSubCategories } from '../../modules/redux/reducers/subCategories/selectors';
@@ -15,6 +11,9 @@ import { IProduct } from '../../modules/redux/reducers/products/types';
 import { getAllProductsSaga } from '../../modules/saga/products/actions';
 import { setProductsModalStateAC } from '../../modules/redux/reducers/products/actions';
 import { updateCartItemsSaga } from '../../modules/saga/cart/actions';
+import { SubCategories } from '../../components/subCategories';
+import { Products } from '../../components/products';
+import { ProductModal } from '../../components/productModal';
 
 const CategoriesContent: FC<{}> = () => {
     const router = useRouter();
@@ -52,9 +51,20 @@ const CategoriesContent: FC<{}> = () => {
     }, [products, isLoading]);
 
     return(
-        <Box sx={styles.rootWrapper}>
+        <Box sx={{
+            display: 'flex',
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+        }}>
             {isLoading ? <LinearProgress sx={{ width: '100%' }} /> : null}
-            <Box sx={styles.productsListWrapper}>
+            <Box sx={{
+                transition: 'all 0.3s',
+                display: 'flex',
+                flexDirection: 'column',
+                width: '80%',
+            }}>
                 {subCategoriesContent}
                 {productsContent}
             </Box>

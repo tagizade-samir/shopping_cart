@@ -1,12 +1,12 @@
 import { Box, LinearProgress } from '@mui/material';
 import React, { FC, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CategoryItem } from '../../components/categoryItem';
 import { AppDispatch } from '../../modules/redux';
 import { selectCategories, selectIsLoading } from '../../modules/redux/reducers/categories/selectors';
 import { ICategory } from '../../modules/redux/reducers/categories/types';
 import { getAllCategoriesSaga } from '../../modules/saga/categories/actions';
 
-import { CategoryItem } from './components/categoryItem';
 
 const Categories: FC<{}> = () => {
     const dispatch: AppDispatch = useDispatch();

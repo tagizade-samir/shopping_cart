@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material';
 import React, { FC, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { IProduct } from '../../../../modules/redux/reducers/products/types';
-import { selectSelectedSubCategory } from '../../../../modules/redux/reducers/subCategories/selectors';
+import { IProduct } from '../../modules/redux/reducers/products/types';
+import { selectSelectedSubCategory } from '../../modules/redux/reducers/subCategories/selectors';
 import { ProductItem } from '../productItem';
 
 interface ProductsProps {

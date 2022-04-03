@@ -1,4 +1,4 @@
-import { theme } from "../../../../modules/theme";
+import { theme } from "../../modules/theme";
 
 export const styles = {
     rootWrapper: {

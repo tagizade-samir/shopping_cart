@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Typography } from '@mui/material';
 
-import { styles } from './index.style';
 import Image from '../../assets/images/mainBG.jpg';
 import MainButton from '../../components/mainButton';
 
@@ -15,8 +14,28 @@ const Home: FC<{}> = () => {
 
     return(
         <>
-            <Box sx={{...styles.backgroundWrapper, backgroundImage: `url(${Image.src})`}} />
-            <Box sx={styles.mainWrapper}>
+            <Box sx={{
+                display: 'flex',
+                flex: 1,
+                height: '100vh',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                filter: 'blur(4px)',
+                backgroundImage: `url(${Image.src})`
+                }} />
+            <Box sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                height: '100%',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                flexDirection: 'column',
+                gap: 2
+            }}>
                 <Typography variant='h2'>
                     Hungry? Check out our restaurant
                 </Typography>

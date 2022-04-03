@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './index.style';
 import { SubCategoryItem } from '../subCategoryItem';
-import { ISubCategory } from '../../../../modules/redux/reducers/subCategories/types';
-import { setSelectedSubCategoryDataAC } from '../../../../modules/redux/reducers/subCategories/actions';
-import { AppDispatch } from '../../../../modules/redux';
-import { selectSelectedSubCategory } from '../../../../modules/redux/reducers/subCategories/selectors';
+import { ISubCategory } from '../../modules/redux/reducers/subCategories/types';
+import { selectSelectedSubCategory } from '../../modules/redux/reducers/subCategories/selectors';
+import { setSelectedSubCategoryDataAC } from '../../modules/redux/reducers/subCategories/actions';
+import { AppDispatch } from '../../modules/redux';
 
 interface SubCategoriesProps {
     list: Array<ISubCategory> | [];
