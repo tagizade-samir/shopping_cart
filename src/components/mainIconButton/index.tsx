@@ -1,11 +1,11 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, SyntheticEvent } from 'react';
 import { Button, Typography } from '@mui/material';
 import { styles } from './index.style';
 
 interface MainIconButtonProps {
     title: string;
     icon: ReactElement;
-    onClick: () => void,
+    onClick: (e: SyntheticEvent) => void,
 }
 
 const MainIconButton: FC<MainIconButtonProps> = ({ title, onClick, icon }) => {

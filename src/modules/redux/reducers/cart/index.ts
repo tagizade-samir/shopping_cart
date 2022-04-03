@@ -14,9 +14,10 @@ export const cartReducer = (state = initialState, action: any) => {
                 items: [...state.items, payload],
             }
         case CartActions.DELETE_CART_ITEM:
+            const itemIndex = state.items.findIndex((item: IProduct) => item.id === payload);
             return {
                 ...state,
-                items: state.items.filter((item: IProduct) => item.id !== payload),
+                items: state.items.filter((_: IProduct, index: number) => index !== itemIndex),
             }
         default:
             return state;
