@@ -2,7 +2,7 @@ import React, { FC, useEffect, useMemo } from 'react';
 import { Box, LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getStyles } from '../style';
+import { getStyles } from '../../../styles/style';
 import { AppDispatch } from '../../modules/redux';
 import { CategoryItem } from '../../components/categoryItem';
 import { ICategory } from '../../modules/redux/reducers/categories/types';

@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 import { NextRouter, useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getStyles } from '../style';
+import { getStyles } from '../../../styles/style';
 import { Utils } from '../../services/utils';
 import { AppDispatch } from '../../modules/redux';
 import MainButton from '../../components/mainButton';

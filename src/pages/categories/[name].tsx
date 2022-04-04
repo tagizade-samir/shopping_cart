@@ -3,7 +3,7 @@ import { NextRouter, useRouter } from 'next/router';
 import { Box, LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getStyles } from '../style';
+import { getStyles } from '../../../styles/style';
 import { AppDispatch } from '../../modules/redux';
 import { Products } from '../../components/products';
 import { ProductModal } from '../../components/productModal';

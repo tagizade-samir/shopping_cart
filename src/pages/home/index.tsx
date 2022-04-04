@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { NextRouter, useRouter } from 'next/router';
 import { Box, Typography } from '@mui/material';
 
-import { getStyles } from '../style';
+import { getStyles } from '../../../styles/style';
 import { Utils } from '../../services/utils';
 import Image from '../../assets/images/mainBG.jpg';
 import MainButton from '../../components/mainButton';

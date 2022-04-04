@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Typography } from '@mui/material';
 import { NextRouter, useRouter } from 'next/router';
 
-import { getStyles } from '../style';
+import { getStyles } from '../../../styles/style';
 import { Utils } from '../../services/utils';
 import { AppDispatch } from '../../modules/redux';
 import { removeItem } from '../../modules/storage';
