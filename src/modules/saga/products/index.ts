@@ -1,11 +1,11 @@
 import { call, delay, put, takeLatest } from "redux-saga/effects";
-import { ResponseType } from "../../../services/api";
-import { getAllSubCategories } from "../../../services/api/subCategories";
-import { setIsLoadingProductsDataAC, setProductsDataAC } from "../../redux/reducers/products/actions";
-import { IProduct } from "../../redux/reducers/products/types";
-import { setSubCategoriesDataAC } from "../../redux/reducers/subCategories/actions";
-import { ISubCategory } from "../../redux/reducers/subCategories/types";
 
+import { ResponseType } from "../../../services/api";
+import { IProduct } from "../../redux/reducers/products/types";
+import { ISubCategory } from "../../redux/reducers/subCategories/types";
+import { getAllSubCategories } from "../../../services/api/subCategories";
+import { setSubCategoriesDataAC } from "../../redux/reducers/subCategories/actions";
+import { setIsLoadingProductsDataAC, setProductsDataAC } from "../../redux/reducers/products/actions";
 import { ProductsSagaActions } from "./types";
 
 export function* watcherProducts() {

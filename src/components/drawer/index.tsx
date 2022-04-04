@@ -1,22 +1,21 @@
 import React, { FC } from 'react';
 import { Box, useTheme } from '@mui/system';
+import { NextRouter, useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Drawer as MUIDrawer, IconButton, Theme, Typography } from '@mui/material';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { Drawer as MUIDrawer, Theme } from '@mui/material';
 
+import MainButton from '../mainButton';
 import { getStyles } from './index.style';
-import { selectIsDrawerOpen } from '../../modules/redux/reducers/app/selectors';
 import { AppDispatch } from '../../modules/redux';
 import { setDrawerStateAC } from '../../modules/redux/reducers/app/actions';
-import MainButton from '../mainButton';
-import { NextRouter, useRouter } from 'next/router';
+import { selectIsDrawerOpen } from '../../modules/redux/reducers/app/selectors';
 
 export const Drawer: FC<{}> = () => {
-    const isOpen: boolean = useSelector(selectIsDrawerOpen);
     const dispatch: AppDispatch = useDispatch();
     const theme: Theme = useTheme();
-    const styles = getStyles(theme);
     const router: NextRouter = useRouter();
+    const isOpen: boolean = useSelector(selectIsDrawerOpen);
+    const styles = getStyles(theme);
 
     const toggleDrawer = () => {
         dispatch(setDrawerStateAC(!isOpen));

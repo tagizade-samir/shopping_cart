@@ -1,8 +1,10 @@
-import { Paper, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
 import React, { FC } from 'react';
+import { useTheme } from '@mui/system';
+import { useRouter } from 'next/router';
+import { Paper, Theme, Typography } from '@mui/material';
+
+import { getStyles } from './index.style';
 import { ICategory } from '../../modules/redux/reducers/categories/types';
-import { styles } from './index.style';
 
 interface ICategoryItem {
     item: ICategory;
@@ -10,6 +12,8 @@ interface ICategoryItem {
 
 export const CategoryItem: FC<ICategoryItem> = ({ item }) => {
     const router = useRouter();
+    const theme: Theme = useTheme();
+    const styles = getStyles(theme);
 
     const handleClickItem = () => {
         router.push(`/categories/${item.url}`);
@@ -17,9 +21,9 @@ export const CategoryItem: FC<ICategoryItem> = ({ item }) => {
 
     return(
         <Paper elevation={4} sx={styles.root} {...{ onClick: handleClickItem }}>
-                <Typography sx={styles.title} variant='h5'>
-                    {item.name}
-                </Typography>
+            <Typography sx={styles.title} variant='h5'>
+                {item.name}
+            </Typography>
         </Paper>
     );
 }

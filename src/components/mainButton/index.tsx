@@ -1,5 +1,6 @@
 import React, { FC, ReactElement, SyntheticEvent } from 'react';
 import { Button } from '@mui/material';
+
 import { getStyles } from './index.style';
 
 interface MainButtonProps {

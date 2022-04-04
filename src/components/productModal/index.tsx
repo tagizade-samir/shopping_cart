@@ -1,8 +1,9 @@
-import { Card, CardActions, CardMedia, Modal, Typography, useTheme, Theme } from '@mui/material';
 import React, { FC } from 'react';
-import { IProduct } from '../../modules/redux/reducers/products/types';
+import { Card, CardActions, CardMedia, Modal, Typography, useTheme, Theme } from '@mui/material';
+
 import MainButton from '../mainButton';
 import { getStyles } from './index.style';
+import { IProduct } from '../../modules/redux/reducers/products/types';
 
 interface ProductModalProps {
     isOpen: boolean;

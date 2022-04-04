@@ -1,15 +1,15 @@
-import { Theme, Typography } from '@mui/material';
-import { Box, useTheme } from '@mui/system';
-import Image from 'next/image';
 import React, { FC } from 'react';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
 import { useDispatch } from 'react-redux';
-import { IProduct } from '../../../../modules/redux/reducers/products/types';
+import { Box, useTheme } from '@mui/system';
+import AddIcon from '@mui/icons-material/Add';
+import { Theme, Typography } from '@mui/material';
+import RemoveIcon from '@mui/icons-material/Remove';
+
+import { getStyles } from './index.style';
+import MainIconButton from '../../../mainIconButton';
 import { AppDispatch } from '../../../../modules/redux';
 import { updateCartItemsSaga } from '../../../../modules/saga/cart/actions';
-import MainIconButton from '../../../mainIconButton';
-import { getStyles } from './index.style';
+import { IProduct } from '../../../../modules/redux/reducers/products/types';
 
 interface CartItemProps {
     item: IProduct;

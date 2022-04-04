@@ -1,10 +1,11 @@
-import { call, put, putResolve, select, takeLatest } from 'redux-saga/effects';
-import { Utils } from '../../../services/utils';
-import { addCartItemAC } from '../../redux/reducers/cart/actions';
-import { setUserDataAC } from '../../redux/reducers/user/actions';
-import { IUser } from '../../redux/reducers/user/types';
+import { call, put, takeLatest } from 'redux-saga/effects';
+
 import { readItem } from '../../storage';
 import { AppSagaActions } from './types';
+import { Utils } from '../../../services/utils';
+import { IUser } from '../../redux/reducers/user/types';
+import { addCartItemAC } from '../../redux/reducers/cart/actions';
+import { setUserDataAC } from '../../redux/reducers/user/actions';
 
 export function* watcherSynchronizeApp() {
     yield takeLatest(AppSagaActions.SYNCHRONIZE_APP, workerSynchronizeApp);

@@ -1,17 +1,17 @@
-import { Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import { NextRouter, useRouter } from 'next/router';
 import React, { FC, useEffect, useState } from 'react';
+import { Box } from '@mui/system';
 import { useDispatch } from 'react-redux';
-import MainButton from '../../components/mainButton';
+import { Typography } from '@mui/material';
+import { NextRouter, useRouter } from 'next/router';
+
 import { AppDispatch } from '../../modules/redux';
+import MainButton from '../../components/mainButton';
 import { clearCartAC } from '../../modules/redux/reducers/cart/actions';
 
 const ConfirmOrder: FC<{}> = () => {
     const router: NextRouter = useRouter();
-    const { data }: any = router.query;
     const dispatch: AppDispatch = useDispatch();
-
+    const { data }: any = router.query;
     const [products, setProducts] = useState([]);
 
     useEffect(() => {

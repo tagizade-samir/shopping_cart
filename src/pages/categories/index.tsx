@@ -1,12 +1,12 @@
-import { Box, LinearProgress } from '@mui/material';
 import React, { FC, useEffect, useMemo } from 'react';
+import { Box, LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { CategoryItem } from '../../components/categoryItem';
+
 import { AppDispatch } from '../../modules/redux';
-import { selectCategories, selectIsLoading } from '../../modules/redux/reducers/categories/selectors';
+import { CategoryItem } from '../../components/categoryItem';
 import { ICategory } from '../../modules/redux/reducers/categories/types';
 import { getAllCategoriesSaga } from '../../modules/saga/categories/actions';
-
+import { selectCategories, selectIsLoading } from '../../modules/redux/reducers/categories/selectors';
 
 const Categories: FC<{}> = () => {
     const dispatch: AppDispatch = useDispatch();
@@ -14,7 +14,6 @@ const Categories: FC<{}> = () => {
     const isLoading: boolean = useSelector(selectIsLoading);
 
     useEffect(() => {
-        /* TODO: Ask whether should I retrieve data everytime user comes to this page, or only when data is empty */
         if (!categories.length) {
             dispatch(getAllCategoriesSaga());
         }

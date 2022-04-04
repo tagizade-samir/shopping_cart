@@ -1,8 +1,9 @@
-import { call, delay, put, select, takeLatest } from "redux-saga/effects";
-import { Utils } from "../../../services/utils";
-import { setUserDataAC } from "../../redux/reducers/user/actions";
-import { putItem, removeItem } from "../../storage";
+import { call, delay, put, takeLatest } from "redux-saga/effects";
+
 import { UserSagaActions } from "./types";
+import { Utils } from "../../../services/utils";
+import { putItem, removeItem } from "../../storage";
+import { setUserDataAC } from "../../redux/reducers/user/actions";
 
 export function* watcherUser() {
     yield takeLatest(UserSagaActions.SET_USER_SAGA, workerUser);

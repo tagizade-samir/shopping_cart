@@ -1,13 +1,14 @@
-import { Card, CardActionArea, CardActions, CardContent, CardMedia, Grid, Theme, Typography } from '@mui/material';
-import { useTheme } from '@mui/system';
 import React, { FC, SyntheticEvent } from 'react';
+import { useTheme } from '@mui/system';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../modules/redux';
-import { setProductsModalStateAC } from '../../modules/redux/reducers/products/actions';
-import { IProduct } from '../../modules/redux/reducers/products/types';
-import { updateCartItemsSaga } from '../../modules/saga/cart/actions';
+import { Card, CardActionArea, CardActions, CardContent, CardMedia, Grid, Theme, Typography } from '@mui/material';
+
 import MainButton from '../mainButton';
 import { getStyles } from './index.style';
+import { AppDispatch } from '../../modules/redux';
+import { updateCartItemsSaga } from '../../modules/saga/cart/actions';
+import { IProduct } from '../../modules/redux/reducers/products/types';
+import { setProductsModalStateAC } from '../../modules/redux/reducers/products/actions';
 
 interface ProductItemProps {
     item: IProduct;

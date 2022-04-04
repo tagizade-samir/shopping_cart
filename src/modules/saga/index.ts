@@ -1,9 +1,10 @@
 import { spawn } from "redux-saga/effects";
-import { watcherSynchronizeApp } from "./app";
-import { watcherCart } from "./cart";
-import { watcherCategories } from "./categories";
-import { watcherProducts } from "./products";
+
 import { watcherUser } from "./user";
+import { watcherCart } from "./cart";
+import { watcherProducts } from "./products";
+import { watcherSynchronizeApp } from "./app";
+import { watcherCategories } from "./categories";
 
 export function* rootSaga() {
     yield spawn(watcherCart);

@@ -1,30 +1,30 @@
-import React, { Dispatch, FC, SetStateAction, SyntheticEvent, useEffect, useMemo, useState } from 'react';
+import React, { FC, SyntheticEvent, useEffect, useMemo, useState } from 'react';
 import { Box } from '@mui/system';
 import MenuIcon from '@mui/icons-material/Menu';
+import { NextRouter, useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Badge, Theme, Typography, useTheme } from '@mui/material';
 
 import { getStyles } from './index.style';
-import MainIconButton from '../mainIconButton';
-import { Badge, Theme, Typography, useTheme } from '@mui/material';
 import { CartPopover } from '../cartPopover';
-import { selectIsDrawerOpen } from '../../modules/redux/reducers/app/selectors';
-import { selectCartItems } from '../../modules/redux/reducers/cart/selectors';
-import { setDrawerStateAC } from '../../modules/redux/reducers/app/actions';
+import MainIconButton from '../mainIconButton';
 import { AppDispatch } from '../../modules/redux';
 import { IProduct } from '../../modules/redux/reducers/products/types';
-import { NextRouter, useRouter } from 'next/router';
+import { setDrawerStateAC } from '../../modules/redux/reducers/app/actions';
+import { selectCartItems } from '../../modules/redux/reducers/cart/selectors';
+import { selectIsDrawerOpen } from '../../modules/redux/reducers/app/selectors';
 import { selectIsUserAuthorized } from '../../modules/redux/reducers/user/selectors';
 
 const MainHeader: FC<{}> = () => {
-    const isDrawerOpen: boolean = useSelector(selectIsDrawerOpen);
-    const dispatch: AppDispatch = useDispatch();
-    const items: Array<IProduct> | [] = useSelector(selectCartItems);
-    const [anchor, setAnchor]: any = useState(null);
-    const router: NextRouter = useRouter();
     const theme: Theme = useTheme();
+    const router: NextRouter = useRouter();
+    const dispatch: AppDispatch = useDispatch();
+    const isDrawerOpen: boolean = useSelector(selectIsDrawerOpen);
     const styles = getStyles(theme, isDrawerOpen);
+    const [anchor, setAnchor]: any = useState(null);
+    const items: Array<IProduct> | [] = useSelector(selectCartItems);
     const isUserAuthorized: boolean = useSelector(selectIsUserAuthorized);
 
     useEffect(() => {

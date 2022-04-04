@@ -1,33 +1,30 @@
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import { Theme } from '@mui/material';
 import { Box, useTheme } from '@mui/system';
 import { NextRouter, useRouter } from 'next/router';
-import React, { FC, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '../../../../modules/redux';
-import { setSnackbarStateAC } from '../../../../modules/redux/reducers/app/actions';
-import { IProduct } from '../../../../modules/redux/reducers/products/types';
-import { selectIsUserAuthorized } from '../../../../modules/redux/reducers/user/selectors';
-import { Utils } from '../../../../services/utils';
-import MainButton from '../../../mainButton';
+
 import { CartItem } from '../cartItem';
 import { getStyles } from './index.style';
+import MainButton from '../../../mainButton';
+import { Utils } from '../../../../services/utils';
+import { AppDispatch } from '../../../../modules/redux';
+import { IProduct } from '../../../../modules/redux/reducers/products/types';
+import { setSnackbarStateAC } from '../../../../modules/redux/reducers/app/actions';
+import { selectIsUserAuthorized } from '../../../../modules/redux/reducers/user/selectors';
 
 interface CartContentProps {
     items: Array<IProduct>;
 }
 
 export const CartContent: FC<CartContentProps> = ({ items }) => {
-    const [totalPrice, setTotalPrice] = useState(0.0);
     const theme: Theme = useTheme();
-    const styles = getStyles(theme);
-    const isUserAuthorized: boolean = useSelector(selectIsUserAuthorized);
-    const dispatch: AppDispatch = useDispatch();
     const router: NextRouter = useRouter();
-
-    const products = useMemo(() => {
-        return Object.values(Utils.HELPERS.groupCartItems(items));
-    }, [items]);
-
+    const dispatch: AppDispatch = useDispatch();
+    const styles = getStyles(theme);
+    const [totalPrice, setTotalPrice] = useState(0.0);
+    const isUserAuthorized: boolean = useSelector(selectIsUserAuthorized);
+    
     useEffect(() => {
         if (!items.length) {
             setTotalPrice(0.0);
@@ -36,6 +33,10 @@ export const CartContent: FC<CartContentProps> = ({ items }) => {
             setTotalPrice(parseFloat(newTotalPrice.toFixed(1)));
         }
     }, [items.length]);
+
+    const products = useMemo(() => {
+        return Object.values(Utils.HELPERS.groupCartItems(items));
+    }, [items]);
 
     const handleConfirmOrder = () => {
         if (isUserAuthorized) {

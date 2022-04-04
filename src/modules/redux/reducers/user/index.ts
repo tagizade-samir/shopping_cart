@@ -1,4 +1,5 @@
 import { Reducer } from "redux";
+
 import { IUser, UserActions } from "./types";
 
 const initialState = {

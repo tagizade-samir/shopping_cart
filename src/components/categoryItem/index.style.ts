@@ -1,15 +1,14 @@
-import { theme } from "../../modules/theme";
+import { Theme } from "@mui/material";
 
-
-export const styles = {
+export const getStyles = (theme: Theme) => ({
     root: {
         transition: 'all 0.3s',
         marginBottom: '20px',
         width: '70%',
+        cursor: 'pointer',
         '&:first-of-type': {
             marginTop: '20px'
         },
-        cursor: 'pointer',
         '&:hover': {
             backgroundColor: 'rgba(0, 0, 0, 0.2)'
         }
@@ -28,4 +27,4 @@ export const styles = {
             fontSize: '0.9rem',
         },
     }
-}
+});

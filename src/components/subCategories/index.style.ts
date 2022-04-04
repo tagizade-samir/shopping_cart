@@ -1,6 +1,6 @@
-import { theme } from "../../modules/theme";
+import { Theme } from "@mui/material";
 
-export const styles = {
+export const getStyles = (theme: Theme) => ({
     rootWrapper: {
         display: 'flex',
         width: '80%',
@@ -18,4 +18,4 @@ export const styles = {
             paddingY: '10px',
         }
     },
-}
+});

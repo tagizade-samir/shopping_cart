@@ -1,10 +1,11 @@
-import { call, put, putResolve, select, takeLatest } from 'redux-saga/effects';
-import { Utils } from '../../../services/utils';
-import { addCartItemAC, removeCartItemAC, removeItemTypeAC } from '../../redux/reducers/cart/actions';
-import { selectCartItems } from '../../redux/reducers/cart/selectors';
-import { IProduct } from '../../redux/reducers/products/types';
+import { call, putResolve, select, takeLatest } from 'redux-saga/effects';
+
 import { putItem } from '../../storage';
+import { Utils } from '../../../services/utils';
 import { CartSagaActions, ICartPayload } from './types';
+import { IProduct } from '../../redux/reducers/products/types';
+import { selectCartItems } from '../../redux/reducers/cart/selectors';
+import { addCartItemAC, removeCartItemAC, removeItemTypeAC } from '../../redux/reducers/cart/actions';
 
 export function* watcherCart() {
     yield takeLatest(CartSagaActions.UPDATE_CART_ITEMS, workerCart);

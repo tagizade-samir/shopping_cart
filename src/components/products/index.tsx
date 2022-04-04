@@ -1,11 +1,11 @@
-import { Grid } from '@mui/material';
 import React, { FC, useMemo } from 'react';
+import { Grid } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../modules/redux';
-import { selectCartItemsIds } from '../../modules/redux/reducers/cart/selectors';
-import { IProduct } from '../../modules/redux/reducers/products/types';
-import { selectSelectedSubCategory } from '../../modules/redux/reducers/subCategories/selectors';
+
 import { ProductItem } from '../productItem';
+import { IProduct } from '../../modules/redux/reducers/products/types';
+import { selectCartItemsIds } from '../../modules/redux/reducers/cart/selectors';
+import { selectSelectedSubCategory } from '../../modules/redux/reducers/subCategories/selectors';
 
 interface ProductsProps {
     list: Array<IProduct>;

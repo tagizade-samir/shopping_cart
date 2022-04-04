@@ -6,12 +6,12 @@ export const getStyles = (theme: Theme) => ({
         width: Utils.CONSTANTS.drawerWidth,
         display: 'flex',
         justifyContent: 'center',
-        [theme.breakpoints.down(300)]: {
-            width: 100,
-        },
         height: '100%',
         alignItems: 'flex-start',
         padding: 1,
         backgroundColor: '#dedede',
+        [theme.breakpoints.down(300)]: {
+            width: 100,
+        },
     },
 });

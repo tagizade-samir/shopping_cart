@@ -1,18 +1,18 @@
-import { Box, Theme, useMediaQuery } from '@mui/material';
 import React, { FC, useEffect, useMemo } from 'react';
 import { useTheme } from '@mui/system';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../modules/redux';
+import { Box, Theme, useMediaQuery } from '@mui/material';
 
 import { getStyles } from './index.style';
 import { Utils } from '../../services/utils';
+import { AppDispatch, RootState } from '../../modules/redux';
 import { synchronizeAppSaga } from '../../modules/saga/app/actions';
 
 interface DrawerControllerProps {
     children: Array<any>;
 }
 
-const DrawerController: FC<DrawerControllerProps> = ({ children }) => {
+export const DrawerController: FC<DrawerControllerProps> = ({ children }) => {
     const isDrawerOpen: boolean = useSelector((state: RootState) => state.app.isDrawerOpen);
     const theme: Theme = useTheme();
     const styles = useMemo(() => getStyles(), []);
@@ -37,5 +37,3 @@ const DrawerController: FC<DrawerControllerProps> = ({ children }) => {
         </Box>
     );
 }
-
-export default DrawerController;

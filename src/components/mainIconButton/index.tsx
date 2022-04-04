@@ -1,5 +1,6 @@
 import React, { FC, ReactElement, SyntheticEvent } from 'react';
 import { Button, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
+
 import { styles } from './index.style';
 import { Utils } from '../../services/utils';
 

@@ -1,13 +1,14 @@
 import React, { FC, SyntheticEvent, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { Popper, Theme, Typography, useMediaQuery } from '@mui/material';
 import { Box, useTheme } from '@mui/system';
-import { getStyles } from './index.style';
-import { CartContent } from './components/cartContent';
-import { selectCartItems } from '../../modules/redux/reducers/cart/selectors';
-import { IProduct } from '../../modules/redux/reducers/products/types';
-import MainIconButton from '../mainIconButton';
 import ClearIcon from '@mui/icons-material/Clear';
+import { Popper, Theme, Typography, useMediaQuery } from '@mui/material';
+
+import { getStyles } from './index.style';
+import MainIconButton from '../mainIconButton';
+import { CartContent } from './components/cartContent';
+import { IProduct } from '../../modules/redux/reducers/products/types';
+import { selectCartItems } from '../../modules/redux/reducers/cart/selectors';
 
 interface CartPopoverProps {
     isOpen: boolean;
@@ -16,10 +17,10 @@ interface CartPopoverProps {
 }
 
 export const CartPopover: FC<CartPopoverProps> = ({ isOpen, anchor, handleToggleCart }) => {
-    const items: Array<IProduct> | [] = useSelector(selectCartItems);
     const theme: Theme = useTheme();
-    const styles = getStyles(theme, items.length);
+    const items: Array<IProduct> | [] = useSelector(selectCartItems);
     const matches = useMediaQuery(theme.breakpoints.down(items.length ? 500 : 350));
+    const styles = getStyles(theme, items.length);
 
     const content = useMemo(() => {
         return items.length

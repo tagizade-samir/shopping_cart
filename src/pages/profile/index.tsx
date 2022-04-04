@@ -1,15 +1,17 @@
+import React, { FC, useEffect } from 'react';
 import { Box } from '@mui/material';
 import { NextRouter, useRouter } from 'next/router';
-import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import MainButton from '../../components/mainButton';
+
 import { AppDispatch } from '../../modules/redux';
-import { selectIsUserAuthorized } from '../../modules/redux/reducers/user/selectors';
+import MainButton from '../../components/mainButton';
 import { setUserSaga } from '../../modules/saga/user/actions';
+import { setDrawerStateAC } from '../../modules/redux/reducers/app/actions';
+import { selectIsUserAuthorized } from '../../modules/redux/reducers/user/selectors';
 
 const Profile: FC<{}> = () => {
-    const dispatch: AppDispatch = useDispatch();
     const router: NextRouter = useRouter();
+    const dispatch: AppDispatch = useDispatch();
     const isUserAuthorized: boolean = useSelector(selectIsUserAuthorized);
 
     useEffect(() => {
@@ -19,6 +21,7 @@ const Profile: FC<{}> = () => {
     }, [isUserAuthorized]);
 
     const handleImitateLogOut = () => {
+        dispatch(setDrawerStateAC(false));
         dispatch(setUserSaga(false));
     }
 
