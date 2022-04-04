@@ -1,4 +1,8 @@
 import { RootState } from "../..";
 import { IProduct } from "../products/types";
 
-export const selectCartItems = ((state: RootState): { items: Array<IProduct | null> } => state.cart);
+export const selectCartItems = ((state: RootState): Array<IProduct> | [] => state.cart.items);
+
+export const selectCartItemsIds = ((state: RootState) => {
+    return state.cart.items.length ? state.cart.items.map(i => i.id) : [];
+});

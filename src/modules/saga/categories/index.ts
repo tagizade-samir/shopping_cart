@@ -16,9 +16,9 @@ function* workerCategories() {
         if(categories.data && categories.data.length) {
             yield put(setCategoriesDataAC(categories.data));
         }
-        yield put(setIsLoadingAC(false));
     } catch (e) {
-        yield put(setIsLoadingAC(false));
         console.warn('Error workerCategories -> ', e);
+    } finally {
+        yield put(setIsLoadingAC(false));
     }
 }

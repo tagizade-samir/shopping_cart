@@ -10,7 +10,7 @@ export const getStyles = (theme: Theme) => ({
     rootWrapper: {
         backgroundColor: 'white',
         maxWidth: 600,
-        paddingX: '50px',
+        padding: '20px 50px',
         display: 'flex',
         flexDirection: 'column',
         gap: 2,

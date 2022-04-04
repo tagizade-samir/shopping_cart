@@ -1,7 +1,7 @@
 import { IProduct } from "../products/types";
 import { CartActions } from "./types";
 
-export const addCartItemAC = (payload: IProduct) => ({
+export const addCartItemAC = (payload: Array<IProduct>) => ({
     type: CartActions.ADD_CART_ITEM,
     payload,
 });

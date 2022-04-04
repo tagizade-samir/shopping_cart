@@ -1,20 +1,25 @@
 import React, { FC, ReactElement, SyntheticEvent } from 'react';
-import { Button, Typography } from '@mui/material';
+import { Button, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { styles } from './index.style';
+import { Utils } from '../../services/utils';
 
 interface MainIconButtonProps {
-    title: string;
+    title: string | ReactElement;
     icon: ReactElement;
     onClick: (e: SyntheticEvent) => void,
 }
 
 const MainIconButton: FC<MainIconButtonProps> = ({ title, onClick, icon }) => {
+    const theme: Theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down(Utils.CONSTANTS.headerChangeWidth));
+
     return(
         <Button sx={styles.wrapper} variant={'text'} onClick={onClick}>
-            {icon}
-            <Typography className='title'>
-                {title}
-            </Typography>
+            {matches
+                ? <Typography className='title'>
+                    {title}
+                </Typography>
+                : icon}
         </Button>
     );
 }

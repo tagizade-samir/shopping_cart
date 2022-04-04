@@ -1,8 +1,11 @@
-import { Box } from '@mui/system';
+import { Theme } from '@mui/material';
+import { Box, useTheme } from '@mui/system';
 import React, { FC, useEffect, useMemo, useState } from 'react';
 import { IProduct } from '../../../../modules/redux/reducers/products/types';
 import { Utils } from '../../../../services/utils';
+import MainButton from '../../../mainButton';
 import { CartItem } from '../cartItem';
+import { getStyles } from './index.style';
 
 interface CartContentProps {
     items: Array<IProduct>;
@@ -10,6 +13,8 @@ interface CartContentProps {
 
 export const CartContent: FC<CartContentProps> = ({ items }) => {
     const [totalPrice, setTotalPrice] = useState(0.0);
+    const theme: Theme = useTheme();
+    const styles = getStyles(theme);
 
     const products = useMemo(() => {
         return Object.values(Utils.HELPERS.groupCartItems(items));
@@ -25,12 +30,13 @@ export const CartContent: FC<CartContentProps> = ({ items }) => {
     }, [items.length]);
 
     return(
-        <Box sx={{ width: 500, display: 'flex' }}>
-            <Box sx={{ width: '70%', paddingX: '10px' }}>
+        <Box sx={styles.rootWrapper}>
+            <Box sx={styles.contentWrapper}>
                 {products.map(({ item, count }: any) => <CartItem key={item.id} item={item} count={count} />)}
             </Box>
-            <Box sx={{ width: '30%', paddingX: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Box sx={styles.priceWrapper}>
                 {totalPrice} $
+                <MainButton variant='contained' onClick={() => {}} title='Confirm order' />
             </Box>
         </Box>
     );

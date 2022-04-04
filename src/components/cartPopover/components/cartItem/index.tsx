@@ -1,5 +1,5 @@
-import { Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Theme, Typography } from '@mui/material';
+import { Box, useTheme } from '@mui/system';
 import Image from 'next/image';
 import React, { FC } from 'react';
 import AddIcon from '@mui/icons-material/Add';
@@ -9,6 +9,7 @@ import { IProduct } from '../../../../modules/redux/reducers/products/types';
 import { AppDispatch } from '../../../../modules/redux';
 import { updateCartItemsSaga } from '../../../../modules/saga/cart/actions';
 import MainIconButton from '../../../mainIconButton';
+import { getStyles } from './index.style';
 
 interface CartItemProps {
     item: IProduct;
@@ -17,6 +18,8 @@ interface CartItemProps {
 
 export const CartItem: FC<CartItemProps> = ({ item, count }) => {
     const dispatch: AppDispatch = useDispatch();
+    const theme: Theme = useTheme();
+    const styles = getStyles(theme);
 
     const handleAddItem = () => {
         dispatch(updateCartItemsSaga({ type: 'add', data: item }));
@@ -27,8 +30,8 @@ export const CartItem: FC<CartItemProps> = ({ item, count }) => {
     }
 
     return(
-        <Box sx={{ padding: '5px', backgroundColor: '#89b0ae', margin: '5px 0px', display: 'flex' }}>
-            <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+        <Box sx={styles.rootWrapper}>
+            <Box sx={styles.itemWrapper}>
                 <Typography>
                     {item.name}
                 </Typography>
@@ -36,7 +39,7 @@ export const CartItem: FC<CartItemProps> = ({ item, count }) => {
                     {item.price} $
                 </Typography>
             </Box>
-            <Box sx={{ width: 80, display: 'flex', alignItems: 'center', flexDirection: 'column', gap: 1 }}>
+            <Box sx={styles.buttonsWrapper}>
                 <MainIconButton onClick={handleAddItem} icon={<AddIcon />} title='+' />
                 <Typography>
                     {count}

@@ -6,6 +6,7 @@ export const getStyles = (theme: Theme) => ({
         justifyContent: 'center',
     },
     cardWrapper: {
+        transition: 'all 0.3s',
         height: 300,
         width: 200,
         [theme.breakpoints.down('sm')]: {
@@ -13,6 +14,9 @@ export const getStyles = (theme: Theme) => ({
         },
         [theme.breakpoints.down(300)]: {
             height: 320,
+        },
+        '&:hover': {
+            backgroundColor: 'rgba(137, 176, 174, 0.4)'
         }
     },
     topContainer: {

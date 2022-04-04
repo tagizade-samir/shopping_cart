@@ -1,24 +1,29 @@
-import { theme } from "../../modules/theme";
+import { Theme } from "@mui/material";
 import { Utils } from "../../services/utils";
 
-
-export const styles = {
+export const getStyles = (theme: Theme, isDrawerOpen: boolean) => ({
     root: {
         backgroundColor: '#89b0ae',
         display: 'flex',
         flex: 1,
         justifyContent: 'space-between',
         padding: '10px 20px',
-        [theme.breakpoints.down(Utils.CONSTANTS.headerChangeWidth)]: {
+        height: '55px',
+        [theme.breakpoints.down(isDrawerOpen ? 440 : Utils.CONSTANTS.headerChangeWidth)]: {
             flexDirection: 'column',
             gap: 2,
+            height: '100%',
         },
+        position: 'sticky',
+        top: 0,
+        width: '100%',
+        zIndex: 10,
     },
     rightButtonsWrapper: {
         display: 'flex',
         gap: 2,
-        [theme.breakpoints.down(Utils.CONSTANTS.headerChangeWidth)]: {
+        [theme.breakpoints.down(isDrawerOpen ? 440 : Utils.CONSTANTS.headerChangeWidth)]: {
             flexDirection: 'column'
         },
     }
-}
+});

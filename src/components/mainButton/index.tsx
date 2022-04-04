@@ -5,14 +5,16 @@ import { getStyles } from './index.style';
 interface MainButtonProps {
     title?: string;
     icon?: ReactElement;
-    variant?: "text" | "outlined" | "contained",
-    onClick: (e: SyntheticEvent) => void,
+    variant?: "text" | "outlined" | "contained";
+    onClick: (e: SyntheticEvent) => void;
+    color?: "inherit" | "success" | "primary" | "secondary" | "error" | "info" | "warning" | undefined;
 }
 
-const MainButton: FC<MainButtonProps> = ({ title, variant = 'text', onClick, icon }) => {
+const MainButton: FC<MainButtonProps> = ({ title, variant = 'text', onClick, icon, color }) => {
     const styles = getStyles(variant);
     return(
         <Button
+            color={color || 'primary'}
             sx={styles.rootWrapper}
             variant={variant}
             onClick={onClick}>

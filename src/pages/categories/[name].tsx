@@ -64,6 +64,7 @@ const CategoriesContent: FC<{}> = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 width: '80%',
+                paddingBottom: '20px'
             }}>
                 {subCategoriesContent}
                 {productsContent}

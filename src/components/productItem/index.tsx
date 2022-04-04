@@ -11,9 +11,10 @@ import { getStyles } from './index.style';
 
 interface ProductItemProps {
     item: IProduct;
+    isAdded: boolean;
 }
 
-export const ProductItem: FC<ProductItemProps> = ({ item }) => {
+export const ProductItem: FC<ProductItemProps> = ({ item, isAdded }) => {
     const dispatch: AppDispatch = useDispatch();
     const theme: Theme = useTheme();
     const styles = getStyles(theme);
@@ -47,7 +48,7 @@ export const ProductItem: FC<ProductItemProps> = ({ item }) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions sx={styles.buttonContainer}>
-                    <MainButton variant='contained' title='Add to cart' onClick={handleClickOnAddToCart} />
+                    <MainButton color={isAdded ? 'success' : 'primary'} variant='contained' title='Add to cart' onClick={handleClickOnAddToCart} />
                 </CardActions>
             </Card>
         </Grid>

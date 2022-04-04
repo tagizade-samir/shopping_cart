@@ -24,9 +24,9 @@ function* workerProducts({ payload }: any) {
                 yield put(setProductsDataAC(data.products));
             }
         }
-        yield put(setIsLoadingProductsDataAC(false));
     } catch (e) {
-        yield put(setIsLoadingProductsDataAC(false));
         console.warn('Error workerProducts -> ', e);
+    } finally {
+        yield put(setIsLoadingProductsDataAC(false));
     }
 }
