@@ -3,6 +3,8 @@ import { Box } from '@mui/system';
 import { NextRouter, useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { getStyles } from '../style';
+import { Utils } from '../../services/utils';
 import { AppDispatch } from '../../modules/redux';
 import MainButton from '../../components/mainButton';
 import { setUserSaga } from '../../modules/saga/user/actions';
@@ -13,6 +15,7 @@ const SignUp: FC<{}> = () => {
     const dispatch: AppDispatch = useDispatch();
     const isUserAuthorized: boolean = useSelector(selectIsUserAuthorized);
     const router: NextRouter = useRouter();
+    const styles = getStyles();
 
     const handleImitateSignUp = () => {
         dispatch(setDrawerStateAC(false));
@@ -21,12 +24,12 @@ const SignUp: FC<{}> = () => {
 
     useEffect(() => {
         if (isUserAuthorized) {
-            router.push('/categories');
+            router.push(Utils.ROUTES.categories);
         }
     }, [isUserAuthorized]);
 
     return(
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingY: '50px' }}>
+        <Box sx={styles.signUpWrapper}>
             <MainButton variant='contained' title='Imitate sign up' onClick={handleImitateSignUp} />
         </Box>
     );

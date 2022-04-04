@@ -12,20 +12,22 @@ interface DrawerControllerProps {
     children: Array<any>;
 }
 
+const { smallerDrawerWidth, drawerChangeWidth } = Utils.CONSTANTS;
+
 export const DrawerController: FC<DrawerControllerProps> = ({ children }) => {
     const isDrawerOpen: boolean = useSelector((state: RootState) => state.app.isDrawerOpen);
     const theme: Theme = useTheme();
     const styles = useMemo(() => getStyles(), []);
-    const matches = useMediaQuery(theme.breakpoints.down(300));
+    const matches: boolean = useMediaQuery(theme.breakpoints.down(drawerChangeWidth));
     const dispatch: AppDispatch = useDispatch();
 
     useEffect(() => {
         dispatch(synchronizeAppSaga());
     }, []);
 
-    const marginLeft = useMemo(() => {
+    const marginLeft: number = useMemo(() => {
         if (matches) {
-            return isDrawerOpen ? 100 : 0;
+            return isDrawerOpen ? smallerDrawerWidth : 0;
         } else {
             return isDrawerOpen ? Utils.CONSTANTS.drawerWidth : 0;
         }

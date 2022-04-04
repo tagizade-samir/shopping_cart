@@ -4,17 +4,19 @@ import { useDispatch } from 'react-redux';
 import { Typography } from '@mui/material';
 import { NextRouter, useRouter } from 'next/router';
 
+import { getStyles } from '../style';
+import { Utils } from '../../services/utils';
 import { AppDispatch } from '../../modules/redux';
+import { removeItem } from '../../modules/storage';
 import MainButton from '../../components/mainButton';
 import { clearCartAC } from '../../modules/redux/reducers/cart/actions';
-import { removeItem } from '../../modules/storage';
-import { Utils } from '../../services/utils';
 
 const ConfirmOrder: FC<{}> = () => {
     const router: NextRouter = useRouter();
     const dispatch: AppDispatch = useDispatch();
     const { data }: any = router.query;
     const [products, setProducts] = useState([]);
+    const styles = getStyles();
 
     useEffect(() => {
         if (data) {
@@ -30,19 +32,11 @@ const ConfirmOrder: FC<{}> = () => {
     const handleConfirmOrder = () => {
         dispatch(clearCartAC());
         removeItem(Utils.CONSTANTS.cartItemsKey);
-        router.push('/categories');
+        router.push(Utils.ROUTES.categories);
     }
 
     return(
-        <Box sx={{
-            display: 'flex',
-            flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            paddingY: 10,
-            gap: 3
-        }}>
+        <Box sx={styles.confirmOrderWrapper}>
             {products.map((product: string) => (
                 <Typography variant='h4' key={product}>
                     {product}

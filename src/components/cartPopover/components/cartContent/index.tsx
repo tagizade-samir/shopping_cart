@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { Dispatch, FC, useEffect, useMemo, useState } from 'react';
 import { Theme } from '@mui/material';
 import { Box, useTheme } from '@mui/system';
 import { NextRouter, useRouter } from 'next/router';
@@ -22,7 +22,7 @@ export const CartContent: FC<CartContentProps> = ({ items }) => {
     const router: NextRouter = useRouter();
     const dispatch: AppDispatch = useDispatch();
     const styles = getStyles(theme);
-    const [totalPrice, setTotalPrice] = useState(0.0);
+    const [totalPrice, setTotalPrice]: [number, Dispatch<React.SetStateAction<number>>] = useState(0.0);
     const isUserAuthorized: boolean = useSelector(selectIsUserAuthorized);
     
     useEffect(() => {
@@ -40,7 +40,7 @@ export const CartContent: FC<CartContentProps> = ({ items }) => {
 
     const handleConfirmOrder = () => {
         if (isUserAuthorized) {
-            router.push(`/confirmOrder?data=${JSON.stringify(items.map(i => `${i.name} - ${i.price} $`))}`);
+            router.push(`${Utils.ROUTES.confirmOrder}?data=${JSON.stringify(items.map(i => `${i.name} - ${i.price} $`))}`);
         } else {
             dispatch(setSnackbarStateAC({ isOpen: true, text: 'You have to sign in to confirm your order', severity: 'error' }));
         }

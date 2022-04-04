@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent, useEffect, useMemo, useState } from 'react';
+import React, { FC, ReactElement, SyntheticEvent, useEffect, useMemo, useState } from 'react';
 import { Box } from '@mui/system';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NextRouter, useRouter } from 'next/router';
@@ -8,6 +8,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Badge, Theme, Typography, useTheme } from '@mui/material';
 
 import { getStyles } from './index.style';
+import { Utils } from '../../services/utils';
 import { CartPopover } from '../cartPopover';
 import MainIconButton from '../mainIconButton';
 import { AppDispatch } from '../../modules/redux';
@@ -46,19 +47,19 @@ const MainHeader: FC<{}> = () => {
 
     const handleGoToProfile = () => {
         if (isUserAuthorized) {
-            router.push('/profile');
+            router.push(Utils.ROUTES.profile);
         } else {
-            router.push('/signUp');
+            router.push(Utils.ROUTES.signUp);
         }
     }
 
-    const badgedIcon = useMemo(() => {
+    const badgedIcon: ReactElement = useMemo(() => {
         return <Badge badgeContent={items.length} color='primary'>
             <ShoppingCartIcon color='secondary' />
         </Badge>;
     }, [items.length]);
 
-    const badgeTitle = useMemo(() => {
+    const badgeTitle: ReactElement = useMemo(() => {
         return <Badge badgeContent={items.length} color='primary'>
             <Typography>Cart</Typography>
         </Badge>;

@@ -18,7 +18,6 @@ function* workerProducts({ payload }: any) {
         if (payload) {
             const result: ResponseType<{ sub_categories: Array<ISubCategory>, products: Array<IProduct> }> = yield call(getAllSubCategories, payload);
             const { data } = result;
-            yield delay(1000);
             if (data && data.sub_categories && data.products) {
                 yield put(setSubCategoriesDataAC(data.sub_categories));
                 yield put(setProductsDataAC(data.products));

@@ -2,6 +2,7 @@ import React, { FC, useEffect, useMemo } from 'react';
 import { Box, LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { getStyles } from '../style';
 import { AppDispatch } from '../../modules/redux';
 import { CategoryItem } from '../../components/categoryItem';
 import { ICategory } from '../../modules/redux/reducers/categories/types';
@@ -12,6 +13,7 @@ const Categories: FC<{}> = () => {
     const dispatch: AppDispatch = useDispatch();
     const categories: Array<ICategory> = useSelector(selectCategories);
     const isLoading: boolean = useSelector(selectIsLoading);
+    const styles = getStyles();
 
     useEffect(() => {
         if (!categories.length) {
@@ -28,12 +30,7 @@ const Categories: FC<{}> = () => {
     }, [isLoading, categories]);
 
     return(
-        <Box sx={{
-            display: 'flex',
-            flex: 1,
-            flexDirection: 'column',
-            alignItems: 'center',
-        }}>
+        <Box sx={styles.categoriesWrapper}>
             {content}
         </Box>
     );

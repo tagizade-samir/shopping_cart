@@ -6,6 +6,7 @@ import { Drawer as MUIDrawer, Theme } from '@mui/material';
 
 import MainButton from '../mainButton';
 import { getStyles } from './index.style';
+import { Utils } from '../../services/utils';
 import { AppDispatch } from '../../modules/redux';
 import { setDrawerStateAC } from '../../modules/redux/reducers/app/actions';
 import { selectIsDrawerOpen } from '../../modules/redux/reducers/app/selectors';
@@ -23,7 +24,7 @@ export const Drawer: FC<{}> = () => {
 
     const handleGoHome = () => {
         dispatch(setDrawerStateAC(false));
-        router.push('/');
+        router.push(Utils.ROUTES.root);
     }
 
     return(

@@ -1,4 +1,5 @@
 import { Theme } from "@mui/material";
+import { Utils } from "../../../../services/utils";
 
 export const getStyles = (theme: Theme) => ({
     rootWrapper: {
@@ -6,7 +7,7 @@ export const getStyles = (theme: Theme) => ({
         backgroundColor: '#89b0ae',
         margin: '5px 0px',
         display: 'flex',
-        [theme.breakpoints.down(500)]: {
+        [theme.breakpoints.down(Utils.CONSTANTS.fullCartChangeWidth)]: {
             flexDirection: 'column'
         }
     },

@@ -9,6 +9,7 @@ import MainIconButton from '../mainIconButton';
 import { CartContent } from './components/cartContent';
 import { IProduct } from '../../modules/redux/reducers/products/types';
 import { selectCartItems } from '../../modules/redux/reducers/cart/selectors';
+import { Utils } from '../../services/utils';
 
 interface CartPopoverProps {
     isOpen: boolean;
@@ -18,8 +19,9 @@ interface CartPopoverProps {
 
 export const CartPopover: FC<CartPopoverProps> = ({ isOpen, anchor, handleToggleCart }) => {
     const theme: Theme = useTheme();
+    const { fullCartChangeWidth, emptyCartChangeWidth } = Utils.CONSTANTS;
     const items: Array<IProduct> | [] = useSelector(selectCartItems);
-    const matches = useMediaQuery(theme.breakpoints.down(items.length ? 500 : 350));
+    const matches: boolean = useMediaQuery(theme.breakpoints.down(items.length ? fullCartChangeWidth : emptyCartChangeWidth));
     const styles = getStyles(theme, items.length);
 
     const content = useMemo(() => {
@@ -28,7 +30,7 @@ export const CartPopover: FC<CartPopoverProps> = ({ isOpen, anchor, handleToggle
             : <Typography sx={{display: 'flex', flex: 1, alignItems: 'center'}}>Your cart is empty</Typography>
     }, [items]);
 
-    const rightOffsetCart = useMemo(() => {
+    const rightOffsetCart: number = useMemo(() => {
         if (items.length) {
             return matches ? 0 : -120;
         } else {

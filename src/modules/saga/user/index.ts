@@ -11,25 +11,15 @@ export function* watcherUser() {
 
 function* workerUser({ payload }: any) {
     try {
-        yield delay(1000);
+        const { CONSTANTS: { userItemKey }, HELPERS: { getEmptyUser, getUser } } = Utils;
         if (payload) {
-            const user = {
-                isAuthorized: true,
-                name: 'Samir',
-                gender: 'male',
-                id: '1',
-            };
+            const user = getUser();
             yield put(setUserDataAC(user));
-            yield call(putItem, Utils.CONSTANTS.userItemKey, user);
+            yield call(putItem, userItemKey, user);
         } else {
-            const emptyUser = {
-                isAuthorized: false,
-                name: '',
-                gender: '',
-                id: '',
-            };
+            const emptyUser = getEmptyUser();
             yield put(setUserDataAC(emptyUser));
-            yield call(removeItem, Utils.CONSTANTS.userItemKey);
+            yield call(removeItem, userItemKey);
         }
     } catch (e) {
         console.warn('Error workerUser -> ', e);

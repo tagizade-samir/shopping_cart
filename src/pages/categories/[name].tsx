@@ -1,8 +1,9 @@
 import React, { FC, useEffect, useMemo } from 'react';
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 import { Box, LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { getStyles } from '../style';
 import { AppDispatch } from '../../modules/redux';
 import { Products } from '../../components/products';
 import { ProductModal } from '../../components/productModal';
@@ -16,13 +17,14 @@ import { selectSubCategories } from '../../modules/redux/reducers/subCategories/
 import { selectIsLoadingProducts, selectProducts, selectProductsModalState } from '../../modules/redux/reducers/products/selectors';
 
 const CategoriesContent: FC<{}> = () => {
-    const router = useRouter();
+    const router: NextRouter = useRouter();
     const dispatch: AppDispatch = useDispatch();
     const { name } = router.query as { name: string };
     const subCategories: Array<ISubCategory> = useSelector(selectSubCategories);
     const products: Array<IProduct> = useSelector(selectProducts);
     const isLoading: boolean = useSelector(selectIsLoadingProducts);
     const { isProductsModalOpen, selectedProduct } = useSelector(selectProductsModalState);
+    const styles = getStyles();
 
     useEffect(() => {
         if (name) {
@@ -52,21 +54,9 @@ const CategoriesContent: FC<{}> = () => {
     }, [products, isLoading]);
 
     return(
-        <Box sx={{
-            display: 'flex',
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-        }}>
+        <Box sx={styles.subCategoriesWrapper}>
             {isLoading ? <LinearProgress sx={{ width: '100%' }} /> : null}
-            <Box sx={{
-                transition: 'all 0.3s',
-                display: 'flex',
-                flexDirection: 'column',
-                width: '80%',
-                paddingBottom: '20px'
-            }}>
+            <Box sx={styles.subCategoriesContent}>
                 {subCategoriesContent}
                 {productsContent}
             </Box>

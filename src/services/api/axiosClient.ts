@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
-export const axiosClient = axios.create({
+export const axiosClient: AxiosInstance = axios.create({
     baseURL: 'https://next-shipping-cart-back.herokuapp.com/',
     headers: {
         'Accept': 'application/json',

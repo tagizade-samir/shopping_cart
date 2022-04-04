@@ -1,6 +1,8 @@
 import { Theme } from "@mui/material";
 import { Utils } from "../../services/utils";
 
+const { fullCartChangeWidth, emptyCartChangeWidth, headerChangeWidth } = Utils.CONSTANTS;
+
 export const getStyles = (theme: Theme, count: number) => ({
     rootWrapper: {
         minWidth: 300,
@@ -18,11 +20,11 @@ export const getStyles = (theme: Theme, count: number) => ({
         '&::-webkit-scrollbar': {
             width: 0
         },
-        [theme.breakpoints.down(count ? 500 : 350)]: {
+        [theme.breakpoints.down(count ? fullCartChangeWidth : emptyCartChangeWidth)]: {
             width: 200,
             minWidth: 200,
         },
-        [theme.breakpoints.down(Utils.CONSTANTS.headerChangeWidth)]: {
+        [theme.breakpoints.down(headerChangeWidth)]: {
             width: 140,
             minWidth: 140,
         }
@@ -34,7 +36,7 @@ export const getStyles = (theme: Theme, count: number) => ({
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '25px 10px',
-        [theme.breakpoints.down(Utils.CONSTANTS.headerChangeWidth)]: {
+        [theme.breakpoints.down(headerChangeWidth)]: {
             paddingX: 0,
             justifyContent: 'center',
             '& h6': {

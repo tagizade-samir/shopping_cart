@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import { useTheme } from '@mui/system';
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 import { Paper, Theme, Typography } from '@mui/material';
 
 import { getStyles } from './index.style';
+import { Utils } from '../../services/utils';
 import { ICategory } from '../../modules/redux/reducers/categories/types';
 
 interface ICategoryItem {
@@ -11,12 +12,12 @@ interface ICategoryItem {
 }
 
 export const CategoryItem: FC<ICategoryItem> = ({ item }) => {
-    const router = useRouter();
+    const router: NextRouter = useRouter();
     const theme: Theme = useTheme();
     const styles = getStyles(theme);
 
     const handleClickItem = () => {
-        router.push(`/categories/${item.url}`);
+        router.push(`${Utils.ROUTES.categories}/${item.url}`);
     }
 
     return(

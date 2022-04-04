@@ -13,7 +13,6 @@ function* workerCategories() {
     yield put(setIsLoadingAC(true));
     try {
         const categories: ResponseType<Array<ICategory>> = yield call(getAllCategories);
-        yield delay(1000);
         if(categories.data && categories.data.length) {
             yield put(setCategoriesDataAC(categories.data));
         }

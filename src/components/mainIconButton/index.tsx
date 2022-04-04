@@ -12,7 +12,7 @@ interface MainIconButtonProps {
 
 const MainIconButton: FC<MainIconButtonProps> = ({ title, onClick, icon }) => {
     const theme: Theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down(Utils.CONSTANTS.headerChangeWidth));
+    const matches: boolean = useMediaQuery(theme.breakpoints.down(Utils.CONSTANTS.headerChangeWidth));
 
     return(
         <Button sx={styles.wrapper} variant={'text'} onClick={onClick}>

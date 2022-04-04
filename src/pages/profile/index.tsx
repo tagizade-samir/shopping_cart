@@ -3,6 +3,8 @@ import { Box } from '@mui/material';
 import { NextRouter, useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { getStyles } from '../style';
+import { Utils } from '../../services/utils';
 import { AppDispatch } from '../../modules/redux';
 import MainButton from '../../components/mainButton';
 import { setUserSaga } from '../../modules/saga/user/actions';
@@ -12,11 +14,12 @@ import { selectIsUserAuthorized } from '../../modules/redux/reducers/user/select
 const Profile: FC<{}> = () => {
     const router: NextRouter = useRouter();
     const dispatch: AppDispatch = useDispatch();
+    const styles = getStyles();
     const isUserAuthorized: boolean = useSelector(selectIsUserAuthorized);
 
     useEffect(() => {
         if (!isUserAuthorized) {
-            router.push('/');
+            router.push(Utils.ROUTES.root);
         }
     }, [isUserAuthorized]);
 
@@ -26,7 +29,7 @@ const Profile: FC<{}> = () => {
     }
 
     return(
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingY: '50px' }}>
+        <Box sx={styles.profileWrapper}>
             <MainButton variant='contained' title='Imitate log out' onClick={handleImitateLogOut} />
         </Box>
     );

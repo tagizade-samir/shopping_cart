@@ -1,6 +1,8 @@
 import { Theme } from "@mui/material";
 import { Utils } from "../../services/utils";
 
+const { headerChangeWidth, headerChangeWidthDrawerOpen } = Utils.CONSTANTS;
+
 export const getStyles = (theme: Theme, isDrawerOpen: boolean) => ({
     root: {
         backgroundColor: '#89b0ae',
@@ -13,7 +15,7 @@ export const getStyles = (theme: Theme, isDrawerOpen: boolean) => ({
         top: 0,
         width: '100%',
         zIndex: 10,
-        [theme.breakpoints.down(isDrawerOpen ? 440 : Utils.CONSTANTS.headerChangeWidth)]: {
+        [theme.breakpoints.down(isDrawerOpen ? headerChangeWidthDrawerOpen : headerChangeWidth)]: {
             flexDirection: 'column',
             gap: 2,
             height: '100%',
@@ -22,7 +24,7 @@ export const getStyles = (theme: Theme, isDrawerOpen: boolean) => ({
     rightButtonsWrapper: {
         display: 'flex',
         gap: 2,
-        [theme.breakpoints.down(isDrawerOpen ? 440 : Utils.CONSTANTS.headerChangeWidth)]: {
+        [theme.breakpoints.down(isDrawerOpen ? headerChangeWidthDrawerOpen : headerChangeWidth)]: {
             flexDirection: 'column'
         },
     }
