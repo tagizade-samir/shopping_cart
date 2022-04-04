@@ -6,7 +6,7 @@ import { AppDispatch, RootState } from '../../modules/redux';
 
 import { getStyles } from './index.style';
 import { Utils } from '../../services/utils';
-import { synchronizeCartSaga } from '../../modules/saga/cart/actions';
+import { synchronizeAppSaga } from '../../modules/saga/app/actions';
 
 interface DrawerControllerProps {
     children: Array<any>;
@@ -20,7 +20,7 @@ const DrawerController: FC<DrawerControllerProps> = ({ children }) => {
     const dispatch: AppDispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(synchronizeCartSaga());
+        dispatch(synchronizeAppSaga());
     }, []);
 
     const marginLeft = useMemo(() => {

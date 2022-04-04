@@ -15,6 +15,7 @@ import { setDrawerStateAC } from '../../modules/redux/reducers/app/actions';
 import { AppDispatch } from '../../modules/redux';
 import { IProduct } from '../../modules/redux/reducers/products/types';
 import { NextRouter, useRouter } from 'next/router';
+import { selectIsUserAuthorized } from '../../modules/redux/reducers/user/selectors';
 
 const MainHeader: FC<{}> = () => {
     const isDrawerOpen: boolean = useSelector(selectIsDrawerOpen);
@@ -24,6 +25,7 @@ const MainHeader: FC<{}> = () => {
     const router: NextRouter = useRouter();
     const theme: Theme = useTheme();
     const styles = getStyles(theme, isDrawerOpen);
+    const isUserAuthorized: boolean = useSelector(selectIsUserAuthorized);
 
     useEffect(() => {
         setAnchor(null);
@@ -43,7 +45,11 @@ const MainHeader: FC<{}> = () => {
     }
 
     const handleGoToProfile = () => {
-        
+        if (isUserAuthorized) {
+            router.push('/profile');
+        } else {
+            router.push('/signUp');
+        }
     }
 
     const badgedIcon = useMemo(() => {

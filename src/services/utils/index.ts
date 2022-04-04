@@ -3,6 +3,7 @@ import { IProduct } from "../../modules/redux/reducers/products/types";
 const drawerWidth = 200;
 const headerChangeWidth = 250;
 const cartItemsKey = 'CART_ITEMS';
+const userItemKey = 'USER';
 
 const groupCartItems = (items: Array<IProduct>) => {
     let cartData: any = {};
@@ -35,7 +36,8 @@ export const Utils = {
     CONSTANTS: {
         drawerWidth,
         headerChangeWidth,
-        cartItemsKey
+        cartItemsKey,
+        userItemKey
     },
     HELPERS: {
         groupCartItems

@@ -10,6 +10,7 @@ import { Drawer } from '../components/drawer';
 import MainHeader from '../components/mainHeader';
 import { theme } from '../modules/theme';
 import store from '../modules/redux';
+import { InfoHOC } from '../components/infoHOC';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -17,15 +18,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   return(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <DrawerController>
-          {router.pathname === '/'
-            ? null
-            : <>
-              <Drawer />
-              <MainHeader />
-            </>}
-          <Component {...pageProps} />
-        </DrawerController>
+        <InfoHOC>
+          <DrawerController>
+            {router.pathname === '/'
+              ? null
+              : <>
+                <Drawer />
+                <MainHeader />
+              </>}
+            <Component {...pageProps} />
+          </DrawerController>
+        </InfoHOC>
       </ThemeProvider>
     </Provider>
   );

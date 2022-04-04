@@ -1,7 +1,12 @@
 import { AppStateActions } from "./types";
 
 const initialState = {
-    isDrawerOpen: false
+    isDrawerOpen: false,
+    snackbarState: {
+        isOpen: false,
+        text: '',
+        severity: 'info'
+    }
 }
 
 export const appReducer = (state = initialState, action: any) => {
@@ -11,6 +16,15 @@ export const appReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 isDrawerOpen: payload,
+            }
+        case AppStateActions.SET_SNACKBAR_STATE:
+            return {
+                ...state,
+                snackbarState: {
+                    isOpen: payload.isOpen,
+                    text: payload.text,
+                    severity: payload.severity,
+                },
             }
         default:
             return state;

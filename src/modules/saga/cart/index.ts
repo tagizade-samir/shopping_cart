@@ -1,29 +1,13 @@
 import { call, put, putResolve, select, takeLatest } from 'redux-saga/effects';
 import { Utils } from '../../../services/utils';
-import { addCartItemAC, removeCartItemAC } from '../../redux/reducers/cart/actions';
+import { addCartItemAC, removeCartItemAC, removeItemTypeAC } from '../../redux/reducers/cart/actions';
 import { selectCartItems } from '../../redux/reducers/cart/selectors';
 import { IProduct } from '../../redux/reducers/products/types';
-import { putItem, readItem } from '../../storage';
+import { putItem } from '../../storage';
 import { CartSagaActions, ICartPayload } from './types';
 
 export function* watcherCart() {
     yield takeLatest(CartSagaActions.UPDATE_CART_ITEMS, workerCart);
-}
-
-export function* watcherSynchronizeCart() {
-    yield takeLatest(CartSagaActions.SYNCHRONIZE_CART, workerSynchronizeCart);
-}
-
-export function* workerSynchronizeCart() {
-    try {
-        const result: string = yield call(readItem, Utils.CONSTANTS.cartItemsKey);
-        const products: Array<any> | undefined = JSON.parse(result);
-        if (products && products.length) {
-            yield put(addCartItemAC(products));
-        }
-    } catch(e) {
-        console.warn('Error workerSynchronizeCart: ', e)
-    }
 }
 
 export function* workerCart({ payload }: { payload: ICartPayload, type: string }) {
@@ -35,6 +19,9 @@ export function* workerCart({ payload }: { payload: ICartPayload, type: string }
                 break;
             case 'delete':
                 yield putResolve(removeCartItemAC(data as number));
+                break;
+            case 'removeItems':
+                yield putResolve(removeItemTypeAC(data as IProduct));
                 break;
             default:
                 break;

@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import { getStyles } from './index.style';
 
 interface MainButtonProps {
-    title?: string;
+    title?: string | Element;
     icon?: ReactElement;
     variant?: "text" | "outlined" | "contained";
     onClick: (e: SyntheticEvent) => void;

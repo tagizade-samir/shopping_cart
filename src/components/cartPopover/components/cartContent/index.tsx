@@ -1,7 +1,12 @@
 import { Theme } from '@mui/material';
 import { Box, useTheme } from '@mui/system';
+import { NextRouter, useRouter } from 'next/router';
 import React, { FC, useEffect, useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '../../../../modules/redux';
+import { setSnackbarStateAC } from '../../../../modules/redux/reducers/app/actions';
 import { IProduct } from '../../../../modules/redux/reducers/products/types';
+import { selectIsUserAuthorized } from '../../../../modules/redux/reducers/user/selectors';
 import { Utils } from '../../../../services/utils';
 import MainButton from '../../../mainButton';
 import { CartItem } from '../cartItem';
@@ -15,6 +20,9 @@ export const CartContent: FC<CartContentProps> = ({ items }) => {
     const [totalPrice, setTotalPrice] = useState(0.0);
     const theme: Theme = useTheme();
     const styles = getStyles(theme);
+    const isUserAuthorized: boolean = useSelector(selectIsUserAuthorized);
+    const dispatch: AppDispatch = useDispatch();
+    const router: NextRouter = useRouter();
 
     const products = useMemo(() => {
         return Object.values(Utils.HELPERS.groupCartItems(items));
@@ -29,6 +37,14 @@ export const CartContent: FC<CartContentProps> = ({ items }) => {
         }
     }, [items.length]);
 
+    const handleConfirmOrder = () => {
+        if (isUserAuthorized) {
+            router.push(`/confirmOrder?data=${JSON.stringify(items.map(i => `${i.name} - ${i.price} $`))}`);
+        } else {
+            dispatch(setSnackbarStateAC({ isOpen: true, text: 'You have to sign in to confirm your order', severity: 'error' }));
+        }
+    }
+
     return(
         <Box sx={styles.rootWrapper}>
             <Box sx={styles.contentWrapper}>
@@ -36,7 +52,7 @@ export const CartContent: FC<CartContentProps> = ({ items }) => {
             </Box>
             <Box sx={styles.priceWrapper}>
                 {totalPrice} $
-                <MainButton variant='contained' onClick={() => {}} title='Confirm order' />
+                <MainButton variant='contained' onClick={handleConfirmOrder} title='Confirm order' />
             </Box>
         </Box>
     );

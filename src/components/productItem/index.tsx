@@ -25,7 +25,7 @@ export const ProductItem: FC<ProductItemProps> = ({ item, isAdded }) => {
 
     const handleClickOnAddToCart = (e: SyntheticEvent) => {
         e.stopPropagation();
-        dispatch(updateCartItemsSaga({ type: 'add', data: item }));
+        dispatch(updateCartItemsSaga({ type: isAdded ? 'removeItems' : 'add', data: item }));
     }
 
     return(
@@ -48,7 +48,7 @@ export const ProductItem: FC<ProductItemProps> = ({ item, isAdded }) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions sx={styles.buttonContainer}>
-                    <MainButton color={isAdded ? 'success' : 'primary'} variant='contained' title='Add to cart' onClick={handleClickOnAddToCart} />
+                    <MainButton color={isAdded ? 'error' : 'primary'} variant='contained' title={isAdded ? 'Remove' : 'Add to cart'} onClick={handleClickOnAddToCart} />
                 </CardActions>
             </Card>
         </Grid>
