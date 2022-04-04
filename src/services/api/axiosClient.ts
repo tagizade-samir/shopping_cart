@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 
 export const axiosClient: AxiosInstance = axios.create({
-    baseURL: 'https://next-shipping-cart-back.herokuapp.com/',
+    baseURL: 'https://next-shopping-cart.herokuapp.com/',
     headers: {
         'Accept': 'application/json',
         'Content-type': 'application/json'
