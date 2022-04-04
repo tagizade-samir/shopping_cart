@@ -7,6 +7,8 @@ import { NextRouter, useRouter } from 'next/router';
 import { AppDispatch } from '../../modules/redux';
 import MainButton from '../../components/mainButton';
 import { clearCartAC } from '../../modules/redux/reducers/cart/actions';
+import { removeItem } from '../../modules/storage';
+import { Utils } from '../../services/utils';
 
 const ConfirmOrder: FC<{}> = () => {
     const router: NextRouter = useRouter();
@@ -27,6 +29,7 @@ const ConfirmOrder: FC<{}> = () => {
 
     const handleConfirmOrder = () => {
         dispatch(clearCartAC());
+        removeItem(Utils.CONSTANTS.cartItemsKey);
         router.push('/categories');
     }
 

@@ -1,4 +1,5 @@
 
+import Head from 'next/head';
 import { Provider } from 'react-redux';
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
@@ -16,21 +17,27 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return(
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <InfoHOC>
-          <DrawerController>
-            {router.pathname === '/'
-              ? null
-              : <>
-                <Drawer />
-                <MainHeader />
-              </>}
-            <Component {...pageProps} />
-          </DrawerController>
-        </InfoHOC>
-      </ThemeProvider>
-    </Provider>
+    <>
+      <Head>
+        <title>Foody</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <InfoHOC>
+            <DrawerController>
+              {router.pathname === '/'
+                ? null
+                : <>
+                  <Drawer />
+                  <MainHeader />
+                </>}
+              <Component {...pageProps} />
+            </DrawerController>
+          </InfoHOC>
+        </ThemeProvider>
+      </Provider>
+    </>
   );
 }
 
