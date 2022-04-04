@@ -27,5 +27,14 @@ export const getStyles = (theme: Theme, isDrawerOpen: boolean) => ({
         [theme.breakpoints.down(isDrawerOpen ? headerChangeWidthDrawerOpen : headerChangeWidth)]: {
             flexDirection: 'column'
         },
+    },
+    userAvatarWrapper: {
+        backgroundColor: 'black',
+        width: 25,
+        height: 25,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 50
     }
 });

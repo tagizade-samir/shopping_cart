@@ -27,6 +27,11 @@ export const Drawer: FC<{}> = () => {
         router.push(Utils.ROUTES.root);
     }
 
+    const handleGoCategories = () => {
+        dispatch(setDrawerStateAC(false));
+        router.push(Utils.ROUTES.categories);
+    }
+
     return(
         <MUIDrawer
             variant="persistent"
@@ -35,6 +40,7 @@ export const Drawer: FC<{}> = () => {
             anchor='left'>
                 <Box sx={styles.rootWrapper}>
                     <MainButton variant='contained' title='Home' onClick={handleGoHome} />
+                    <MainButton variant='contained' title='Categories' onClick={handleGoCategories} />
                 </Box>
         </MUIDrawer>
     );

@@ -5,7 +5,7 @@ import { NextRouter, useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Badge, Theme, Typography, useTheme } from '@mui/material';
+import { Badge, SvgIcon, Theme, Typography, useTheme } from '@mui/material';
 
 import { getStyles } from './index.style';
 import { Utils } from '../../services/utils';
@@ -63,7 +63,13 @@ const MainHeader: FC<{}> = () => {
         return <Badge badgeContent={items.length} color='primary'>
             <Typography>Cart</Typography>
         </Badge>;
-    }, [])
+    }, [items.length]);
+
+    const userAvatar = useMemo(() => {
+        return isUserAuthorized
+            ? <Box sx={styles.userAvatarWrapper}>S</Box>
+            : <AccountCircleIcon color='secondary' />;
+    }, [isUserAuthorized]);
 
     return(
         <Box sx={styles.root}>
@@ -71,7 +77,7 @@ const MainHeader: FC<{}> = () => {
             <Box sx={styles.rightButtonsWrapper}>
                 <MainIconButton icon={badgedIcon} onClick={handleToggleCart} title={badgeTitle} />
                 <CartPopover handleToggleCart={handleToggleCart} anchor={anchor} isOpen={!!anchor} />
-                <MainIconButton icon={<AccountCircleIcon color='secondary' />} onClick={handleGoToProfile} title='Profile' />
+                <MainIconButton icon={userAvatar} onClick={handleGoToProfile} title='Profile' />
             </Box>
         </Box>
     );
